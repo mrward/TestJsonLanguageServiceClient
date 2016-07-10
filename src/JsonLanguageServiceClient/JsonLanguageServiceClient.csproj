@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF1C2762-6E6C-4772-A61E-38499B4B793D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>JsonLanguageServiceClient</RootNamespace>
+    <AssemblyName>JsonLanguageServiceClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LanguageServices\LanguageServiceClient.cs" />
+    <Compile Include="LanguageServices\LanguageServiceResponseReader.cs" />
+    <Compile Include="LanguageServices\Platform.cs" />
+    <Compile Include="LanguageServices\ProcessExtensions.cs" />
+    <Compile Include="LanguageServices\ProcessWrapper.cs" />
+    <Compile Include="LanguageServices\Program.cs" />
+    <Compile Include="Messages\TextDocumentIdentifier.cs" />
+    <Compile Include="Messages\InitializationOptions.cs" />
+    <Compile Include="Messages\ClientCapabilities.cs" />
+    <Compile Include="Messages\InitializeParams.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\Response.cs" />
+    <Compile Include="Messages\RequestMessage.cs" />
+    <Compile Include="Messages\ResponseMessage.cs" />
+    <Compile Include="Messages\ResponseError.cs" />
+    <Compile Include="Messages\DidOpenTextDocumentParams.cs" />
+    <Compile Include="Messages\TextDocumentItem.cs" />
+    <Compile Include="Messages\TextDocumentPositionParams.cs" />
+    <Compile Include="Messages\Position.cs" />
+    <Compile Include="Messages\DidChangeTextDocumentParams.cs" />
+    <Compile Include="Messages\TextDocumentContentChangeEvent.cs" />
+    <Compile Include="Messages\Range.cs" />
+    <Compile Include="Messages\DidChangeWatchedFilesParams.cs" />
+    <Compile Include="Messages\FileEvent.cs" />
+    <Compile Include="Messages\FileChangeType.cs" />
+    <Compile Include="Messages\NotificationMessage.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Schemas\package.json.schema">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="package.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LanguageServices\" />
+    <Folder Include="Messages\" />
+  </ItemGroup>
+</Project>
